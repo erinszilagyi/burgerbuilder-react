@@ -2,7 +2,7 @@
 
 React app to build burgers with a fixed set of ingredients.
 
-Hosted example:
+Hosted example: http://vegan-burger-builder-react.s3-website.ca-central-1.amazonaws.com
 
 ### Setup
 
