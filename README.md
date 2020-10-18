@@ -1,6 +1,6 @@
 # Burger Builder
 
-React app to build burgers with a fixed set of ingredients. This app uses axios for HTTP Requests, and Firebase as the backend.
+React app to build burgers with a fixed set of ingredients. This app uses axios for HTTP Requests, react-router for routing, and Firebase as the backend.
 
 S3 hosted example: http://vegan-burger-builder-react.s3-website.ca-central-1.amazonaws.com
 
