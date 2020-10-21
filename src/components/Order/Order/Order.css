@@ -2,6 +2,12 @@
   width: 100%;
   border: 1px solid #eeeeee;
   padding: 10px;
-  margin: 10px auto;
+  margin: 20px;
   box-sizing: border-box;
+}
+
+@media (min-width: 800px) {
+  .Order {
+    width: 700px;
+  }
 }
