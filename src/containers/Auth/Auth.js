@@ -6,6 +6,7 @@ import Input from "../../components/UI/Input/Input";
 import Button from "../../components/UI/Button/Button";
 import Spinner from "../../components/UI/Spinner/Spinner";
 import * as actions from "../../store/actions";
+import { checkInputValidity } from "../../shared/utility";
 
 import classes from "./Auth.css";
 
@@ -45,28 +46,6 @@ class Auth extends Component {
     isSignup: true
   };
 
-  checkInputValidity = (value, rules) => {
-    if (!rules) return true;
-
-    if (rules.required && value.trim() === "") return false;
-
-    if (rules.minLength && value.length < rules.minLength) return false;
-
-    if (rules.maxLength && value.length > rules.maxLength) return false;
-
-    if (rules.isEmail) {
-      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-      if (!pattern.test(value)) return false;
-    }
-
-    if (rules.isNumeric) {
-      const pattern = /^\d+$/;
-      if (!pattern.text(value)) return false;
-    }
-
-    return true;
-  };
-
   inputChangedHandler = (event, inputId) => {
     const updatedControls = {
       ...this.state.controls
@@ -75,7 +54,7 @@ class Auth extends Component {
       ...updatedControls[inputId]
     };
     updatedFormElement.value = event.target.value;
-    updatedFormElement.valid = this.checkInputValidity(
+    updatedFormElement.valid = checkInputValidity(
       updatedFormElement.value,
       updatedFormElement.validation
     );

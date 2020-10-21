@@ -7,6 +7,7 @@ import Spinner from "../../../components/UI/Spinner/Spinner";
 import Input from "../../../components/UI/Input/Input";
 import withErrorHandler from "../../../hoc/withErrorHandler/withErrorHandler";
 import * as actions from "../../../store/actions";
+import { checkInputValidity } from "../../../shared/utility";
 
 import classes from "./ContactData.css";
 
@@ -49,7 +50,8 @@ class ContactData extends Component {
         validation: {
           required: true,
           minLength: 5,
-          maxLength: 5
+          maxLength: 5,
+          isNumeric: true
         },
         valid: false,
         touched: false
@@ -75,7 +77,8 @@ class ContactData extends Component {
         },
         value: "",
         validation: {
-          required: true
+          required: true,
+          isEmail: true
         },
         valid: false,
         touched: false
@@ -119,18 +122,6 @@ class ContactData extends Component {
     this.props.onOrderBurger(this.props.token, order);
   };
 
-  checkInputValidity = (value, rules) => {
-    if (!rules) return true;
-
-    if (rules.required && value.trim() === "") return false;
-
-    if (rules.minLength && value.length < rules.minLength) return false;
-
-    if (rules.maxLength && value.length > rules.maxLength) return false;
-
-    return true;
-  };
-
   inputChangedHandler = (event, inputId) => {
     const updatedOrderForm = {
       ...this.state.orderForm
@@ -139,7 +130,7 @@ class ContactData extends Component {
       ...updatedOrderForm[inputId]
     };
     updatedFormElement.value = event.target.value;
-    updatedFormElement.valid = this.checkInputValidity(
+    updatedFormElement.valid = checkInputValidity(
       updatedFormElement.value,
       updatedFormElement.validation
     );
