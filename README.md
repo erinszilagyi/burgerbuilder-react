@@ -69,4 +69,8 @@ Create a .env file in the main project folder with the following variables:
 
     $ npm start
 
+## Test
+
+    $ npm run test
+
 ## Deploy to Firebase
