@@ -4,7 +4,7 @@ React app to build burgers with a fixed set of ingredients. This app uses axios 
 
 S3 hosted example: http://vegan-burger-builder-react.s3-website.ca-central-1.amazonaws.com
 
-Firebase hosted example:
+Firebase hosted example: https://vegan-burger-builder-react.web.app
 
 ## Setup
 
@@ -73,4 +73,39 @@ Create a .env file in the main project folder with the following variables:
 
     $ npm run test
 
+## Build
+
+    $ npm run build
+
 ## Deploy to Firebase
+
+### Install Firebase tools globally:
+
+    $ npm install -g firebase-tools
+
+### Sign into account:
+
+    $ firebase login
+
+### Initiate project:
+
+    $ firebase init
+
+Steps:
+
+1. Navigate to the following option:
+   - Hosting: Configure and deploy Firebase Hosting sites
+2. Select Use an existing project
+   - Select the project you set up for this app
+3. What do you want to use as your public directory?
+   - enter: build
+4. Configure as a single-page app?
+   - enter: y
+5. Overwrite file build/index.html?
+   - enter: N
+
+### Deploy project:
+
+    $ firebase deploy
+
+NOTE: you can visit your page with the Hosting URL that is outputted once the deploy was successful
